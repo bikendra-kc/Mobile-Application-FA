@@ -11,11 +11,11 @@ void main() {
     debugShowCheckedModeBanner: false,
     title: 'Fonts and Theme',
     theme: AppTheme.getApplicationTheme(),
-    home: MyLogin(),
+    home: const MyLogin(),
     routes: {
-      '/register': (context) => MyRegister(),
-      '/login': (context) => MyLogin(),
-      '/dashboard':((context) => MyDashboard())
+      '/register': (context) => const MyRegister(),
+      '/login': (context) => const MyLogin(),
+      '/dashboard':((context) =>  const DashboardView())
     },
   ));
 }
