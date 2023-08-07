@@ -1,21 +1,25 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-import 'theme/app_theme.dart';
-import 'view/dashboard.dart';
-import 'view/login.dart';
-import 'view/register.dart';
+// import 'theme/app_theme.dart';
+// import 'features/splish/view/dashboard.dart';
+// import 'features/splish/view/login.dart';
+// import 'features/splish/view/register.dart';
+
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// import 'package:hive_and_api_for_class/core/app.dart';
+// import 'package:hive_and_api_for_class/core/network/local/hive_service.dart';
 
 
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: 'Fonts and Theme',
-    theme: AppTheme.getApplicationTheme(),
-    home: const MyLogin(),
-    routes: {
-      '/register': (context) => const MyRegister(),
-      '/login': (context) => const MyLogin(),
-      '/dashboard':((context) =>  const DashboardView())
-    },
-  ));
+  WidgetsFlutterBinding.ensureInitialized();
+  // HiveService().init();
+  // HiveService().deleteHive();
+  runApp(
+    const ProviderScope(
+      child: App(),
+    ),
+  );
 }

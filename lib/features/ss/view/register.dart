@@ -8,6 +8,10 @@ class MyRegister extends StatefulWidget {
 }
 
 class _MyRegisterState extends State<MyRegister> {
+  final key=GlobalKey<FormState>();
+  final usernameController = TextEditingController();
+  final emailController=TextEditingController();
+  final passwordController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,6 +46,7 @@ class _MyRegisterState extends State<MyRegister> {
                       child: Column(
                         children: [
                           TextField(
+                            controller: usernameController,
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -66,6 +71,7 @@ class _MyRegisterState extends State<MyRegister> {
                             height: 30,
                           ),
                           TextField(
+                            controller: emailController,
                             style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -90,6 +96,7 @@ class _MyRegisterState extends State<MyRegister> {
                             height: 30,
                           ),
                           TextField(
+                            controller: passwordController,
                             style: const TextStyle(color: Colors.white),
                             obscureText: true,
                             decoration: InputDecoration(
@@ -129,7 +136,33 @@ class _MyRegisterState extends State<MyRegister> {
                                 backgroundColor: const Color(0xff4c505b),
                                 child: IconButton(
                                     color: Colors.white,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      if (key.currentState!.validate()) {
+                            // ignore: non_constant_identifier_names
+                            UserEntity Users = UserEntity(
+                          
+                              userName: usernameController.text.trim(),
+                              password: passwordController.text.trim(),
+                              email: emailController.text.trim(),
+                             
+                            );
+                            ref
+                                .read(authViewModelProvider.notifier)
+                                .registerUser(Users);
+
+                            if (authState.error != null) {
+                              showSnackBar(
+                                message: authState.error.toString(),
+                                context: context,
+                                color: Colors.red,
+                              );
+                            } else {
+                              showSnackBar(
+                                message: 'Registered successfully',
+                                context: context,
+                              );
+                            }
+                                    },
                                     icon: const Icon(
                                       Icons.arrow_forward,
                                     )),
