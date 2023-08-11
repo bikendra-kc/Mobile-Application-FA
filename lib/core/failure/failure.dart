@@ -1,8 +1,8 @@
-class Failure {
+class AppException  {
   final String error;
   final String? statusCode;
 
-  Failure({
+  AppException({
     required this.error,
     this.statusCode,
   });

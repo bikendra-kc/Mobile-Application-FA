@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_library_managent/config/constants/api_endpoint.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fonts_and_themes/config/constants/api_endpoint.dart';
-
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
 import 'dio_error_interceptor.dart';
 
 final httpServiceProvider = Provider<Dio>(

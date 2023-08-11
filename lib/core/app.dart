@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_library_managent/config/router/app_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fonts_and_themes/config/router/app_route.dart';
 
-class AppView extends ConsumerWidget {
-  const AppView({super.key});
+
+class App extends ConsumerWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+   
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'asdfad',
-      initialRoute: AppRoute.splashRoute,
+      title: 'Student App',
+     
+      initialRoute: AppRoute.loginRoute,
       routes: AppRoute.getApplicationRoute(),
     );
   }
